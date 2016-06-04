@@ -12,7 +12,9 @@ import * as appActions from '../reducers/app/actions';
 
 // this is a traditional React component connected to the redux store
 class LoginScreen extends Component {
-
+  static navigatorStyle = {
+      navBarHidden: true
+  };
   static propTypes = {
     str: PropTypes.string.isRequired,
     obj: PropTypes.object.isRequired,

@@ -21,7 +21,7 @@ class PushedScreen extends Component {
     tabSelectedTextColor: '#FFA000',
     tabNormalTextColor: '#FFC107',
     tabIndicatorColor: '#FF4081',
-    navBarHidden: false
+    navBarHidden: true
   };
 
   static propTypes = {
@@ -49,7 +49,7 @@ class PushedScreen extends Component {
       <View style={{flex: 1, padding: 20, backgroundColor: this.bgColor}}>
 
         <Text style={styles.text}>
-          <Text style={{fontWeight: '500'}}>false Counter: </Text> {this.props.counter.count}
+          <Text style={{fontWeight: '500'}}>Counter: </Text> {this.props.counter.count}
           <Text style={{fontWeight: '500'}}>ToolbarHidden: </Text> {PushedScreen.navigatorStyle.navBarHidden ? "Hidden" : "Not Hidden"}
         </Text>
 

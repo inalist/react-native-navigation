@@ -15,12 +15,14 @@ class FirstTabScreen extends Component {
   static navigatorStyle = {
     statusBarColor: '#303F9F',
     toolBarColor: '#3F51B5',
+    toolBarHidden: true,
     navigationBarColor: '#303F9F',
     buttonsTint: '#FFFFFF',
     titleColor: '#FFFFFF',
     tabSelectedTextColor: '#FFA000',
     tabNormalTextColor: '#FFC107',
-    tabIndicatorColor: '#FFA000'
+    tabIndicatorColor: '#FFA000',
+    navBarHidden: true
   };
 
   static navigatorButtons = {
