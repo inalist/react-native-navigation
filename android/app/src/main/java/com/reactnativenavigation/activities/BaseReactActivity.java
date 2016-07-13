@@ -41,6 +41,8 @@ import com.reactnativenavigation.utils.StyleHelper;
 import com.reactnativenavigation.views.RnnToolBar;
 import com.reactnativenavigation.views.ScreenStack;
 
+import com.mehcode.reactnative.splashscreen.SplashScreenPackage;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -138,8 +140,8 @@ public abstract class BaseReactActivity extends AppCompatActivity implements Def
      */
     public List<ReactPackage> getPackages() {
         return Arrays.asList(
-                new MainReactPackage(),
-                new RnnPackage()
+               new MainReactPackage(),
+               new SplashScreenPackage(this)
         );
     }
 
@@ -463,8 +465,5 @@ public abstract class BaseReactActivity extends AppCompatActivity implements Def
                 mToolbar.toggleDrawer(animated);
                 break;
         }
-    }
-
-    public void showFAB(ReadableMap params) {
     }
 }
