@@ -91,6 +91,7 @@ public class NavigationReactGateway implements ReactGateway, ReactInstanceManage
     private ReactInstanceManager createReactInstanceManager() {
         ReactInstanceManager.Builder builder = ReactInstanceManager.builder()
                 .setApplication(NavigationApplication.instance)
+				.setUseOldBridge(true)
                 .setJSMainModuleName(NavigationApplication.instance.getJsEntryFileName())
                 .setBundleAssetName(NavigationApplication.instance.getBundleAssetName())
                 .setUseDeveloperSupport(NavigationApplication.instance.isDebug())
