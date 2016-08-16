@@ -1,6 +1,7 @@
 package com.reactnativenavigation;
 
 import android.app.Application;
+import android.content.Intent;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 
@@ -27,8 +28,8 @@ public abstract class NavigationApplication extends Application {
         handler = new Handler(getMainLooper());
     }
 
-    public void startReactContext() {
-        reactGateway.startReactContextOnceInBackgroundAndExecuteJS();
+    public void startReactContext(Intent intent) {
+        reactGateway.startReactContextOnceInBackgroundAndExecuteJS(intent);
     }
 
     public void runOnMainThread(Runnable runnable) {

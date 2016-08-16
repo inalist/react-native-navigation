@@ -2,7 +2,13 @@
     package="com.reactnativenavigation">
 
     <application>
-        <activity android:name=".controllers.NavigationActivity" />
+        <activity android:name=".controllers.NavigationActivity"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="au.com.makerx.getsport.LAUNCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

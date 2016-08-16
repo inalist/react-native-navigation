@@ -14,7 +14,7 @@ public interface ReactGateway {
         void onJsDevReload();
     }
 
-    void startReactContextOnceInBackgroundAndExecuteJS();
+    void startReactContextOnceInBackgroundAndExecuteJS(Intent intent);
 
     boolean isInitialized();
 

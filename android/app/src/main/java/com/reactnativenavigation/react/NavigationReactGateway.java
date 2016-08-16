@@ -3,6 +3,7 @@ package com.reactnativenavigation.react;
 import android.app.Activity;
 import android.content.Intent;
 
+import com.evollu.react.fcm.FIRMessagingPackage;
 import com.facebook.react.LifecycleState;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactPackage;
@@ -21,14 +22,17 @@ public class NavigationReactGateway implements ReactGateway, ReactInstanceManage
     private OnJsDevReloadListener onJsDevReloadListener;
     private ReactInstanceManager reactInstanceManager;
     private NavigationReactEventEmitter reactEventEmitter;
+    private Intent launchIntent;
 
     public NavigationReactGateway() {
         reactInstanceManager = createReactInstanceManager();
     }
 
     @Override
-    public void startReactContextOnceInBackgroundAndExecuteJS() {
-        if (reactInstanceManager == null) {
+    public void startReactContextOnceInBackgroundAndExecuteJS(Intent intent) {
+        this.launchIntent = intent;
+
+        if (reactInstanceManager == null || this.launchIntent != null) {
             reactInstanceManager = createReactInstanceManager();
         }
 
@@ -116,6 +120,7 @@ public class NavigationReactGateway implements ReactGateway, ReactInstanceManage
         List<ReactPackage> list = new ArrayList<>();
         list.add(new MainReactPackage());
         list.add(new NavigationReactPackage());
+        list.add(new FIRMessagingPackage(this.launchIntent));
         addAdditionalReactPackagesIfNeeded(list);
         return list;
     }

@@ -41,7 +41,7 @@ public class NavigationActivity extends AppCompatActivity implements DefaultHard
         super.onCreate(savedInstanceState);
 
         if (!NavigationApplication.instance.isReactContextInitialized()) {
-            NavigationApplication.instance.startReactContext();
+            NavigationApplication.instance.startReactContext(getIntent());
             finish();
             return;
         }
@@ -52,6 +52,12 @@ public class NavigationActivity extends AppCompatActivity implements DefaultHard
 
         createLayout();
         createModalController();
+    }
+
+    @Override
+    public void onNewIntent (Intent intent) {
+        super.onNewIntent(intent);
+        NavigationApplication.instance.startReactContext(intent);
     }
 
     private void createModalController() {
