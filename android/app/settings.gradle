@@ -1,0 +1,2 @@
+include ':react-native-fcm'
+project(':react-native-fcm').projectDir = file('../react-native-fcm/android')
