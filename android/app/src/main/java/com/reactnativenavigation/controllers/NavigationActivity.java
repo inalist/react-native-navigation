@@ -7,6 +7,7 @@ import android.view.KeyEvent;
 
 import com.facebook.react.modules.core.DefaultHardwareBackBtnHandler;
 import com.reactnativenavigation.NavigationApplication;
+import com.reactnativenavigation.R;
 import com.reactnativenavigation.layouts.BottomTabsLayout;
 import com.reactnativenavigation.layouts.Layout;
 import com.reactnativenavigation.layouts.LayoutFactory;
@@ -38,6 +39,7 @@ public class NavigationActivity extends AppCompatActivity implements DefaultHard
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         super.onCreate(savedInstanceState);
 
         if (!NavigationApplication.instance.isReactContextInitialized()) {
