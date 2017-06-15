@@ -58,14 +58,14 @@ UIViewController *rightViewController = nil;
     
     [self setDrawerVisualStateBlock:^(MMDrawerController *drawerController, MMDrawerSide drawerSide, CGFloat percentVisible) {
         if (drawerSide == MMDrawerSideRight && percentVisible == 0) {
-            [[UIApplication sharedApplication] setStatusBarHidden:NO];
+            [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
         }
         if (drawerSide == MMDrawerSideRight && percentVisible == 1) {
-            [[UIApplication sharedApplication] setStatusBarHidden:YES];
+            [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
         }
         if (drawerSide == MMDrawerSideLeft) {
             // With an extremely aggressive close swipe, you can actually open the left drawer meaning we need this
-            [[UIApplication sharedApplication] setStatusBarHidden:NO];
+            [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
         }
         MMDrawerControllerDrawerVisualStateBlock block;
         block = [[MMExampleDrawerVisualStateManager sharedManager] drawerVisualStateBlockForDrawerSide:drawerSide];
