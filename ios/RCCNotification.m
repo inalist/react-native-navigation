@@ -315,17 +315,29 @@
         }
         
         [self applyAnimations];
+        self.alpha = 0;
         
-        [UIView animateWithDuration:duration delay:delay usingSpringWithDamping:damping initialSpringVelocity:0 options:UIViewAnimationOptionCurveEaseOut animations:^()
-         {
-             self.alpha = 1;
-             self.transform = CGAffineTransformIdentity;
-             self.layer.transform = CATransform3DIdentity;
-         }
-                         completion:^(BOOL finished)
-         {
-             [self showAnimationEnded:completion];
-         }];
+        dispatch_after(
+            dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2f*NSEC_PER_SEC)),
+            dispatch_get_main_queue(),
+            ^{
+                [UIView
+                 animateWithDuration:duration
+                 delay:delay usingSpringWithDamping:damping
+                 initialSpringVelocity:0
+                 options:UIViewAnimationOptionCurveEaseOut
+                 animations:^()
+                {
+                    self.alpha = 1;
+                    self.transform = CGAffineTransformIdentity;
+                    self.layer.transform = CATransform3DIdentity;
+                }
+                 completion:^(BOOL finished)
+                {
+                    [self showAnimationEnded:completion];
+                }];
+            });
+
     }
     else
     {
