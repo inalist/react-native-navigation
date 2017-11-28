@@ -171,6 +171,17 @@
   {//load the splash from the storyboard that's defined in the info.plist as the LaunchScreen
     @try
     {
+      UIStoryboard *sb = [UIStoryboard storyboardWithName:launchStoryBoard bundle:nil];
+      if (sb != nil) {
+        UIViewController *vc = [sb instantiateInitialViewController];
+        vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        
+        id<UIApplicationDelegate> appDelegate = [UIApplication sharedApplication].delegate;
+        appDelegate.window.rootViewController = vc;
+        [appDelegate.window makeKeyAndVisible];
+        return;
+      }
+      
       splashView = [[NSBundle mainBundle] loadNibNamed:launchStoryBoard owner:self options:nil][0];
       if (splashView != nil)
       {
