@@ -316,6 +316,17 @@ var Controllers = {
     }
   },
 
+  StatusBarOverlay: {
+    show: function(params = {}) {
+      params = { textColor: 'white', backgroundColor: 'black', ...params };
+      _processProperties(params);
+      RCCManager.showStatusBarOverlay(params);
+    },
+    dismiss: function(params = {}) {
+      RCCManager.dismissStatusBarOverlay(params);
+    },
+  },
+
   ScreenUtils: {
     getCurrentlyVisibleScreenId: async function() {
       return await RCCManager.getCurrentlyVisibleScreenId();

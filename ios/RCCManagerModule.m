@@ -9,6 +9,7 @@
 #import "RCCTabBarController.h"
 #import "RCCTheSideBarManagerViewController.h"
 #import "RCCNotification.h"
+#import "RCCStatusBarOverlay.h"
 #import "RCTHelpers.h"
 
 #define kSlideDownAnimationDuration 0.35
@@ -459,6 +460,16 @@ RCT_EXPORT_METHOD(
                   dismissNotification:(NSDictionary*)params resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
     [RCCNotification dismissWithParams:params resolver:resolve rejecter:reject];
+}
+
+RCT_EXPORT_METHOD(showStatusBarOverlay:(NSDictionary*)params)
+{
+    [RCCStatusBarOverlay showWithParams:params];
+}
+
+RCT_EXPORT_METHOD(dismissStatusBarOverlay:(NSDictionary*)params)
+{
+    [RCCStatusBarOverlay dismissWithParams:params];
 }
 
 RCT_EXPORT_METHOD(

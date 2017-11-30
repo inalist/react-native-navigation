@@ -131,6 +131,14 @@ function dismissInAppNotification(params = {}) {
   return platformSpecific.dismissInAppNotification(params);
 }
 
+function showStatusBarOverlay(params = {}) {
+  return platformSpecific.showStatusBarOverlay(params);
+}
+
+function dismissStatusBarOverlay(params = {}) {
+  return platformSpecific.dismissStatusBarOverlay(params);
+}
+
 function startTabBasedApp(params) {
   return platformSpecific.startTabBasedApp(params);
 }
@@ -186,6 +194,8 @@ export default {
   dismissLightBox: dismissLightBox,
   showInAppNotification: showInAppNotification,
   dismissInAppNotification: dismissInAppNotification,
+  showStatusBarOverlay: showStatusBarOverlay,
+  dismissStatusBarOverlay: dismissStatusBarOverlay,
   startTabBasedApp: startTabBasedApp,
   startSingleScreenApp: startSingleScreenApp,
   setEventHandler: setEventHandler,

@@ -1,6 +1,6 @@
 /*eslint-disable*/
 import Navigation from './../Navigation';
-import Controllers, {Modal, Notification, ScreenUtils} from './controllers';
+import Controllers, {Modal, Notification, ScreenUtils, StatusBarOverlay} from './controllers';
 const React = Controllers.hijackReact();
 const {
   ControllerRegistry,
@@ -603,6 +603,14 @@ function dismissInAppNotification(params) {
   Notification.dismiss(params);
 }
 
+function showStatusBarOverlay(params) {
+  StatusBarOverlay.show(params);
+}
+
+function dismissStatusBarOverlay(params) {
+  StatusBarOverlay.dismiss(params);
+}
+
 function savePassProps(params) {
   //TODO this needs to be handled in a common place,
   //TODO also, all global passProps should be handled differently
@@ -654,6 +662,8 @@ export default {
   dismissLightBox,
   showInAppNotification,
   dismissInAppNotification,
+  showStatusBarOverlay,
+  dismissStatusBarOverlay,
   navigatorSetButtons,
   navigatorSetDrawerEnabled,
   navigatorSetTitle,
