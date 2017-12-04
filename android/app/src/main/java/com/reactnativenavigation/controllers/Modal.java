@@ -74,8 +74,8 @@ class Modal extends Dialog implements DialogInterface.OnDismissListener, ScreenS
         layout.showSlidingOverlay(params);
     }
 
-    void hideSlidingOverlay() {
-        layout.hideSlidingOverlay();
+    void hideSlidingOverlay(SlidingOverlayParams params) {
+        layout.hideSlidingOverlay(params);
     }
 
     @Override

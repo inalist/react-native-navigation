@@ -164,8 +164,8 @@ class ModalController implements ScreenStackContainer, Modal.OnModalDismissedLis
         stack.peek().showSlidingOverlay(params);
     }
 
-    void hideSlidingOverlay() {
-        stack.peek().hideSlidingOverlay();
+    void hideSlidingOverlay(SlidingOverlayParams params) {
+        stack.peek().hideSlidingOverlay(params);
     }
 
     Window getWindow() {

@@ -43,7 +43,7 @@ public interface Layout extends ScreenStackContainer {
 
     void showSlidingOverlay(SlidingOverlayParams params);
 
-    void hideSlidingOverlay();
+    void hideSlidingOverlay(SlidingOverlayParams params);
 
     void onModalDismissed();
 

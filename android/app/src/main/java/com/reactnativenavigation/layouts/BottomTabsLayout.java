@@ -55,7 +55,8 @@ public class BottomTabsLayout extends BaseLayout implements AHBottomNavigation.O
     private ScreenStack[] screenStacks;
     private final SideMenuParams leftSideMenuParams;
     private final SideMenuParams rightSideMenuParams;
-    private final SlidingOverlaysQueue slidingOverlaysQueue = new SlidingOverlaysQueue();
+    private final SlidingOverlaysQueue slidingOverlaysQueueTop = new SlidingOverlaysQueue();
+    private final SlidingOverlaysQueue slidingOverlaysQueueBottom = new SlidingOverlaysQueue();
     private
     @Nullable
     SideMenu sideMenu;
@@ -292,12 +293,28 @@ public class BottomTabsLayout extends BaseLayout implements AHBottomNavigation.O
 
     @Override
     public void showSlidingOverlay(final SlidingOverlayParams params) {
-        slidingOverlaysQueue.add(new SlidingOverlay(this, params));
+        switch(params.position) {
+            case Bottom:
+                slidingOverlaysQueueBottom.add(new SlidingOverlay(this, params));
+                return;
+            case Top:
+                slidingOverlaysQueueTop.add(new SlidingOverlay(this, params));
+                return;
+        }
+        return;
     }
 
     @Override
-    public void hideSlidingOverlay() {
-        slidingOverlaysQueue.remove();
+    public void hideSlidingOverlay(final SlidingOverlayParams params) {
+        switch(params.position) {
+            case Bottom:
+                slidingOverlaysQueueBottom.remove();
+                return;
+            case Top:
+                slidingOverlaysQueueTop.remove();
+                return;
+        }
+        return;
     }
 
     @Override
@@ -424,7 +441,8 @@ public class BottomTabsLayout extends BaseLayout implements AHBottomNavigation.O
             lightBox.destroy();
             lightBox = null;
         }
-        slidingOverlaysQueue.destroy();
+        slidingOverlaysQueueTop.destroy();
+        slidingOverlaysQueueBottom.destroy();
     }
 
     @Override

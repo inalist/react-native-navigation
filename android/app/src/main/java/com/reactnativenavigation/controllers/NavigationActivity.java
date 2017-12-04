@@ -370,11 +370,11 @@ public class NavigationActivity extends AppCompatActivity implements DefaultHard
         }
     }
 
-    public void hideSlidingOverlay() {
+    public void hideSlidingOverlay(SlidingOverlayParams params) {
         if (modalController.isShowing()) {
-            modalController.hideSlidingOverlay();
+            modalController.hideSlidingOverlay(params);
         } else {
-            layout.hideSlidingOverlay();
+            layout.hideSlidingOverlay(params);
         }
     }
 

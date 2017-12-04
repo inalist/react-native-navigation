@@ -229,7 +229,8 @@ public class NavigationReactModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void hideSlidingOverlay(final ReadableMap params) {
-        NavigationCommandsHandler.hideSlidingOverlay();
+        SlidingOverlayParams slidingOverlayParams = new SlidingOverlayParamsParser().parse(BundleConverter.toBundle(params));
+        NavigationCommandsHandler.hideSlidingOverlay(slidingOverlayParams);
     }
 
     @ReactMethod

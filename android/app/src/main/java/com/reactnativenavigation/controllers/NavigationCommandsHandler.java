@@ -460,7 +460,7 @@ public class NavigationCommandsHandler {
         });
     }
 
-    public static void hideSlidingOverlay() {
+    public static void hideSlidingOverlay(final SlidingOverlayParams params) {
         final NavigationActivity currentActivity = NavigationActivity.currentActivity;
         if (currentActivity == null) {
             return;
@@ -469,7 +469,7 @@ public class NavigationCommandsHandler {
         NavigationApplication.instance.runOnMainThread(new Runnable() {
             @Override
             public void run() {
-                currentActivity.hideSlidingOverlay();
+                currentActivity.hideSlidingOverlay(params);
             }
         });
     }

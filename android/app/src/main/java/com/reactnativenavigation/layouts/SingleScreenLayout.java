@@ -43,7 +43,8 @@ public class SingleScreenLayout extends BaseLayout {
     private SnackbarAndFabContainer snackbarAndFabContainer;
     protected LeftButtonOnClickListener leftButtonOnClickListener;
     private @Nullable SideMenu sideMenu;
-    private final SlidingOverlaysQueue slidingOverlaysQueue = new SlidingOverlaysQueue();
+    private final SlidingOverlaysQueue slidingOverlaysQueueTop = new SlidingOverlaysQueue();
+    private final SlidingOverlaysQueue slidingOverlaysQueueBottom = new SlidingOverlaysQueue();
     private LightBox lightBox;
 
     public SingleScreenLayout(AppCompatActivity activity, SideMenuParams leftSideMenuParams,
@@ -135,7 +136,8 @@ public class SingleScreenLayout extends BaseLayout {
         if (lightBox != null) {
             lightBox.destroy();
         }
-        slidingOverlaysQueue.destroy();
+        slidingOverlaysQueueTop.destroy();
+        slidingOverlaysQueueBottom.destroy();
     }
 
     @Override
@@ -281,12 +283,28 @@ public class SingleScreenLayout extends BaseLayout {
 
     @Override
     public void showSlidingOverlay(final SlidingOverlayParams params) {
-        slidingOverlaysQueue.add(new SlidingOverlay(this, params));
+        switch(params.position) {
+            case Bottom:
+                slidingOverlaysQueueBottom.add(new SlidingOverlay(this, params));
+                return;
+            case Top:
+                slidingOverlaysQueueTop.add(new SlidingOverlay(this, params));
+                return;
+        }
+        return;
     }
 
     @Override
-    public void hideSlidingOverlay() {
-        slidingOverlaysQueue.remove();
+    public void hideSlidingOverlay(final SlidingOverlayParams params) {
+        switch(params.position) {
+            case Bottom:
+                slidingOverlaysQueueBottom.remove();
+                return;
+            case Top:
+                slidingOverlaysQueueTop.remove();
+                return;
+        }
+        return;
     }
 
     @Override
