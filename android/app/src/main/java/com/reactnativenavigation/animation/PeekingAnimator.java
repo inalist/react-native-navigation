@@ -3,6 +3,7 @@ package com.reactnativenavigation.animation;
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
 
 import com.reactnativenavigation.params.SlidingOverlayParams.Position;
@@ -12,7 +13,7 @@ import static android.view.View.TRANSLATION_Y;
 public class PeekingAnimator {
 
     private static final int SLIDE_OUT_DURATION = 300;
-    private static final int SLIDE_IN_DURATION = 600;
+    private static final int SLIDE_IN_DURATION = 300;
 
     private final Animator animator;
 
@@ -38,7 +39,7 @@ public class PeekingAnimator {
 
         ObjectAnimator slideIn = ObjectAnimator.ofFloat(view, TRANSLATION_Y, 0);
         slideIn.setDuration(SLIDE_IN_DURATION);
-        slideIn.setInterpolator(new OvershootInterpolator(0.8f));
+        slideIn.setInterpolator(new DecelerateInterpolator(0.8f));
         return slideIn;
     }
 
